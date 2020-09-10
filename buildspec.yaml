@@ -6,9 +6,8 @@ phases:
       nodejs: 10
     commands:
       - echo Installing angular cli...
-      - npm install -g @angular/cli
-      #- yarn add @angular-devkit/build-angular --dev
-      - npm i @angular-devkit/build-angular@0.803.24
+      - npm install
+
   build:
     commands:
       - echo Build started...
