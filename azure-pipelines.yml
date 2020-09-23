@@ -20,3 +20,18 @@ steps:
     npm install
     ng build --prod
   displayName: 'npm install and build'
+  
+  
+- task: CopyFiles@2
+  displayName: 'Copy packaged files'
+  inputs:
+      sourceFolder: 'dist'
+      contents: '**/*'
+      targetFolder: $(Build.ArtifactStagingDirectory)
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Packaged Files'
+  condition: succeeded()
+  inputs:
+      pathtoPublish: $(Build.ArtifactStagingDirectory)
+      artifactName: 'source.zip'
